@@ -10,5 +10,6 @@ This C++ program solves the classic 4-Queen puzzle using a backtracking algorith
 ## Algorithm
 The solver implements a simple backtracking algorithm. It recursively tries all possible placements of queens on the board and backtracks whenever it reaches an invalid configuration. The algorithm guarantees finding all possible solutions for the puzzle.
 
-
+## ADDED THE CHESS BOARD.
+just a simple chess board is added.
 

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include<graphics.h>
 using namespace std;
 class Queen
 {
@@ -89,6 +90,43 @@ int main()
         }
         cout << endl;
     }
+     int x=75,y=75,NEP=0;
+    int gd=DETECT,gm;
+    initgraph(&gd,&gm,NULL);
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+            if(NEP==0)
+            {
+            setcolor(YELLOW);
+            setlinestyle(3,0,4);
+            setfillstyle(SOLID_FILL,BLACK);
+            rectangle(x,y,x+75,y+75);
+            floodfill(x+3,y+3,YELLOW);
+            NEP=1;
+            }
+            else
+            {
+                setcolor(YELLOW);
+                setlinestyle(3,0,4);
+                setfillstyle(SOLID_FILL,WHITE);
+                rectangle(x,y,x+75,y+75);
+                floodfill(x+3,y+3,YELLOW);
+                NEP=0;
+            }
+            x=x+75;
+        }
+        if (NEP==0)
+            NEP=1;
+        else
+            NEP=0;
+        x=75;
+        y=y+75;
+    }
+    getch();
+    closegraph();
+    return 0;
 
     return 0;
 }
