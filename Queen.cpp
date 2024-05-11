@@ -93,6 +93,9 @@ int main()
      int x=75,y=75,NEP=0;
     int gd=DETECT,gm;
     initgraph(&gd,&gm,NULL);
+    initwindow(1366,768,"OUTPUT");
+    POINT mouse;
+    GetCursorPos(&mouse);
     for(int i=0;i<4;i++)
     {
         for(int j=0;j<4;j++)

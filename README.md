@@ -12,4 +12,4 @@ The solver implements a simple backtracking algorithm. It recursively tries all 
 
 ## ADDED THE CHESS BOARD.
 just a simple chess board is added.
-
+#ADDED A dir. to run the graphics portion(graphics.h)
