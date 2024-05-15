@@ -200,7 +200,6 @@ int main()
             GetCursorPos(&mouse);
             int a=mouse.x;
             int b=mouse.y;
-            cout<<"THE RIGHT_CLICKED CORDINATE before checked IS\t("<<a<<","<<b<<")"<<endl;
             if(a>=500 &&a<=900 &&b>=100 && b<=500)
             {
               s=m.getthecell(a,b);
@@ -213,6 +212,7 @@ int main()
               }
             }
 		}
+    delay(100);
     }
 	getch();
     closegraph();
