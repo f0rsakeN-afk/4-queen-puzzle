@@ -8,33 +8,30 @@ public:
     {
         int duprow = row;
         int dupcol = col;
-        while (row >= 0 && col >= 0)
+        while (row >= 0 && col >= 0)//checking the LEFT_upper diagonal.
         {
-            if (board[row][col] == 'Q')
+            if (board[row][col] == '1')
             {
                 return false;
             }
                 row--;
                 col--;
         }
-
         col = dupcol;
         row = duprow;
-
-        while (col >= 0)
+        while (col >= 0)//checking for each column in a row.
         {
-            if (board[row][col] == 'Q')
+            if (board[row][col] == '1')
             {
                 return false;
             }
                 col--;
         }
-
         row = duprow;
         col = dupcol;
-        while (row < N && col >= 0)
+        while (col>=0 && row<N)//checking the RIGHT_upper diagonal.
         {
-            if (board[row][col] == 'Q')
+            if (board[row][col] == '1')
             {
                 return false;
             }
@@ -43,7 +40,6 @@ public:
         }
         return true;
     }
-
     void Solve(int col, vector<string> &board, vector<vector<string>> &ans, int N)
     {
         if (col == N)
@@ -56,7 +52,7 @@ public:
         {
             if (isSafe(row, col, board, N))
             {
-                board[row][col] = 'Q';
+                board[row][col] = '1';
                 Solve(col + 1, board, ans, N);
                 board[row][col] = '.';
             }
@@ -65,15 +61,15 @@ public:
 
     vector<vector<string>> solveQueen(int N)
     {
-        vector<vector<string>> ans;
-        vector<string> board(N);
-        string s(N, '.');
-        for (int i = 0; i < N; i++)
+        vector<vector<string>> ans;//created a 2D-dynamic array/vector name "ans" that is going to store the strings as elements.
+        vector<string> board(N);//created a vector name of "board". that has 4 size and going to store string values.
+        string s(N, '.');//crreated a sring named "s" and initilize by"-".while N represents the number of occurance time.
+        for (int i = 0; i < N; i++)//
         {
             board[i] = s;
-        }
-        Solve(0, board, ans, N);
-        return ans;
+        }//all the above stuffs is to create a 2D dynamic arrray named"ans" and initilized with "-".
+        Solve(0, board, ans, N);//passing 0,row, 2D array,number of queen.
+        return ans;//returns the vector
     }
 };
 int main()
@@ -81,7 +77,7 @@ int main()
     int N = 4;
     Queen X;
     vector<vector<string>> ans = X.solveQueen(N);
-    for (int i = 0; i < ans.size(); i++)
+    for (int i = 0; i < ans.size(); i++)//.size() -> returns the no of elements  that is present inside of the dynamic array(vector).
     {
         for (int J = 0; J < ans[0].size(); J++)
         {
@@ -90,46 +86,5 @@ int main()
         }
         cout << endl;
     }
-     int x=75,y=75,NEP=0;
-    int gd=DETECT,gm;
-    initgraph(&gd,&gm,NULL);
-    initwindow(1366,768,"OUTPUT");
-    POINT mouse;
-    GetCursorPos(&mouse);
-    for(int i=0;i<4;i++)
-    {
-        for(int j=0;j<4;j++)
-        {
-            if(NEP==0)
-            {
-            setcolor(YELLOW);
-            setlinestyle(3,0,4);
-            setfillstyle(SOLID_FILL,BLACK);
-            rectangle(x,y,x+75,y+75);
-            floodfill(x+3,y+3,YELLOW);
-            NEP=1;
-            }
-            else
-            {
-                setcolor(YELLOW);
-                setlinestyle(3,0,4);
-                setfillstyle(SOLID_FILL,WHITE);
-                rectangle(x,y,x+75,y+75);
-                floodfill(x+3,y+3,YELLOW);
-                NEP=0;
-            }
-            x=x+75;
-        }
-        if (NEP==0)
-            NEP=1;
-        else
-            NEP=0;
-        x=75;
-        y=y+75;
-    }
-    getch();
-    closegraph();
-    return 0;
-
-    return 0;
+return 0;
 }
