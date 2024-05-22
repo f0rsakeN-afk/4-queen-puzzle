@@ -226,18 +226,17 @@ int main()
             goto Home;
            }
          }
-     delay(200);
+     delay(2000);
     }
-   
     About:
     initwindow(1366,768,"output-About");
     for(int i=0;i<100;i++)
     {
     setcolor(RED+i);
     readimagefile("about.jpg",0,0,1366,768);
-    rectangle(1200,50,1365,120);
+    rectangle(1150,50,1315,120);
     settextstyle(BOLD_FONT,HORIZ_DIR,7);
-    outtextxy(1205,55,"HOME");
+    outtextxy(1155,55,"HOME");
     if(GetAsyncKeyState(VK_LBUTTON))
          {
            int c=0,d=0;
