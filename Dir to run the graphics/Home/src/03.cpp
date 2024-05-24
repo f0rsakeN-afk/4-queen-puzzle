@@ -156,11 +156,13 @@ int main()
     POINT mouse;
     for(int i=0;i<500;i++)
      {
-        setcolor(GREEN);
+        setcolor(YELLOW);
         readimagefile("frontbg1.jpg",1000,0,1366,300);
+        setbkcolor(BLUE);
         settextstyle(BOLD_FONT,HORIZ_DIR,8);
         outtextxy(380,50,"4 QUEEN PUZZLE.");
         setcolor(RED+i);
+         setbkcolor(BLUE+i);
         rectangle(610+i,530+i,820+i,580+i);
         settextstyle(BOLD_FONT,HORIZ_DIR,5);
         outtextxy(615+i,535+i,"PLAY NOW");
@@ -199,7 +201,8 @@ int main()
     readimagefile("solu1.jpg",1000,120,1300,420);
     readimagefile("solu2.jpg",50,400,350,700);
     settextstyle(BOLD_FONT,HORIZ_DIR,3);
-    setcolor(YELLOW);
+    setcolor(RED);
+    setbkcolor(YELLOW);
     outtextxy(200,200,"1.No Two Queens Should Present In The Same Row.");
     outtextxy(200,250,"2.No Two Queens Should Present In The Same Column.");
     outtextxy(200,300,"3.No Two Queens Should Be Diagonally Attacked .");
@@ -210,6 +213,7 @@ int main()
     readimagefile("home1.jpg",1200,630,1300,730);
     settextstyle(BOLD_FONT,HORIZ_DIR,7);
     setcolor(RED);
+    setbkcolor(GREEN);
     outtextxy(25,50,"SOME BASIC INFORMATIONS ARE:-");
     for(int j=0;j<100;j++)
     {
@@ -235,6 +239,7 @@ int main()
     initwindow(1366,768,"output-About");
     for(int i=0;i<100;i++)
     {
+        setbkcolor(WHITE);
     setcolor(RED+i);
     readimagefile("about.jpg",0,0,1366,768);
     readimagefile("home1.jpg",1200,50,1300,150);
@@ -363,6 +368,7 @@ int main()
         x=500;
         y=y+100;
     }
+    setbkcolor(BLUE);
     readimagefile("white.jpg",100,100,175,175);
     readimagefile("black.jpg",220,100,295,175);
     outtextxy(90,185,"* LEFT CLICK");
@@ -476,7 +482,7 @@ int main()
          delay(100);
     }
 	getch();
-    //closegraph();
+    closegraph();
 	return 0;
 }
 
