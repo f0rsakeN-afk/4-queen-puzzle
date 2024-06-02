@@ -1,0 +1,22 @@
+# Ignore object files and executables
+*.o
+*.out
+*.exe
+
+# Ignore build directories
+build/
+bin/
+
+# Ignore SDL-related files
+SDL/
+SDL2/
+SDL2-*
+
+# Ignore any generated files
+*.bak
+*.log
+*.zip
+*.gz
+*.tar
+*.rar
+*.7z
