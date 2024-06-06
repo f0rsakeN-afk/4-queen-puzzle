@@ -85,13 +85,15 @@ int main()
         SDL_Quit();
         return 1;
     }
+
+    SDL_Texture *playBG = IMG_LoadTexture(renderer, "assets/playBG.jpg");
     SDL_Texture *backgroundHome = IMG_LoadTexture(renderer, "assets/bg.jpg");
     SDL_Texture *solution1 = IMG_LoadTexture(renderer, "assets/solu1.jpg");
     SDL_Texture *solution2 = IMG_LoadTexture(renderer, "assets/solu2.jpg");
     SDL_Texture *whiteQueen = IMG_LoadTexture(renderer, "assets/white.jpg");
     SDL_Texture *blackQueen = IMG_LoadTexture(renderer, "assets/black.jpg");
 
-    if (!backgroundHome || !solution1 || !solution2 || !whiteQueen || !blackQueen)
+    if (!playBG || !backgroundHome || !solution1 || !solution2 || !whiteQueen || !blackQueen)
     {
         cout << "Failed to load images SDL_Error" << SDL_GetError() << endl;
         IMG_Quit();
@@ -127,20 +129,20 @@ int main()
                 cout << "Mouse clicked at (" << x << "," << y << ")";
                 if (state == HOME)
                 {
-                    if (x > 870 && x <= 970 && y > 550 && y <= 600)
+                    if (x > 880 && x <= 970 && y > 530 && y <= 580)
                     {
                         state = PLAY;
                     }
-                    else if (x >= 820 && x <= 1000 && y >= 610 && y <= 653)
+                    else if (x >= 780 && x <= 1200 && y >= 581 && y <= 630)
                     {
                         state = INSTRUCTIONS;
                     }
-                    else if (x >= 865 && x <= 1000 && y >= 690 && y <= 743)
+                    else if (x >= 865 && x <= 1000 && y >= 631 && y <= 680)
                     {
                         state = ABOUT;
                     }
                 }
-                else if (state == INSTRUCTIONS || state == ABOUT)
+                else if (state == INSTRUCTIONS || state == ABOUT || state == PLAY)
                 {
                     if (x >= 1700 && x <= 1900 && y >= 940 && y <= 1000)
                     {
@@ -182,30 +184,32 @@ int main()
 
         if (state == HOME)
         {
-            /*   SDL_SetRenderDrawColor(renderer, 8, 76, 97, 255);
-              SDL_RenderClear(renderer); */
             SDL_RenderCopy(renderer, backgroundHome, NULL, NULL);
             renderText(renderer, "Welcome to 4 Queen Puzzle", 600, 50, 55, {214, 50, 48, 255});
-            renderText(renderer, "Play", 870, 550, 45, {255, 255, 255, 255});
-            renderText(renderer, "Instructions", 820, 620, 45, {255, 255, 255, 255});
-            renderText(renderer, "About", 865, 690, 45, {255, 255, 255, 255});
+            renderText(renderer, "PLAY", 880, 530, 45, {255, 255, 255, 255});
+            renderText(renderer, "INSTRUCTIONS", 780, 580, 45, {255, 255, 255, 255});
+            renderText(renderer, "ABOUT", 865, 630, 45, {255, 255, 255, 255});
         }
         else if (state == INSTRUCTIONS)
         {
-            SDL_SetRenderDrawColor(renderer, 0, 0, 129, 255);
+            SDL_SetRenderDrawColor(renderer, 45, 30, 47, 255);
             SDL_RenderClear(renderer);
-            SDL_Rect rect1 = {1000, 120, 300, 300};
-            SDL_Rect rect2 = {50, 400, 300, 300};
+            SDL_Rect rect1 = {1200, 120, 300, 300};
+            SDL_Rect rect2 = {400, 450, 300, 300};
             SDL_RenderCopy(renderer, solution1, NULL, &rect1);
             SDL_RenderCopy(renderer, solution2, NULL, &rect2);
-            renderText(renderer, "1. No Two Queens Should Present In The Same Row.", 200, 200, 3, {255, 255, 0, 255});
-            renderText(renderer, "2. No Two Queens Should Present In The Same Column.", 200, 250, 3, {255, 255, 0, 255});
-            renderText(renderer, "3. No Two Queens Should Be Diagonally Attacked.", 200, 300, 3, {255, 255, 0, 255});
-            renderText(renderer, "4. There Might Be two Combinations, So, for one combination", 380, 450, 3, {255, 255, 0, 255});
-            renderText(renderer, "Black Queen Which Appears On the Right-click of Mouse,", 380, 500, 3, {255, 255, 0, 255});
-            renderText(renderer, "And For Another Their occurs the White Queen on Left-click of Mouse", 380, 550, 3, {255, 255, 0, 255});
-            renderText(renderer, "While Clicking on the Right Position's combination On The Chess Board.", 380, 600, 3, {255, 255, 0, 255});
-            renderText(renderer, "HOME", 1135, 655, 5, {255, 255, 255, 255});
+            renderText(renderer, "N-Queen Problem Instructions:", 400, 100, 35, {247, 44, 37, 255});
+            renderText(renderer, "1. Objective: Place N queens on an 4*4 chessboard.", 400, 150, 30, {255, 255, 0, 255});
+            renderText(renderer, "2. No two queens should share the same row.", 400, 200, 30, {255, 255, 0, 255});
+            renderText(renderer, "3. No two queens should share the same column.", 400, 250, 30, {255, 255, 0, 255});
+            renderText(renderer, "4. No two queens should be on the same diagonal.", 400, 300, 30, {255, 255, 0, 255});
+            renderText(renderer, "5. Click to place queens on the board.", 400, 350, 30, {255, 255, 0, 255});
+            renderText(renderer, "6. Right-click to toggle between black and white queens.", 720, 470, 30, {255, 255, 0, 255});
+            renderText(renderer, "7. Win by placing all N queens correctly.", 720, 520, 30, {255, 255, 0, 255});
+            renderText(renderer, "8. Explore multiple solutions and strategies.", 720, 570, 30, {255, 255, 0, 255});
+            renderText(renderer, "9. Use restart or undo options if available.", 720, 620, 30, {255, 255, 0, 255});
+            renderText(renderer, "10. Enjoy the challenge and improve your skills.", 720, 670, 30, {255, 255, 0, 255});
+            renderText(renderer, "Home", 1700, 940, 35, {19, 111, 99, 255});
         }
 
         else if (state == ABOUT)
@@ -247,21 +251,44 @@ int main()
         }
         else if (state == PLAY)
         {
-            SDL_SetRenderDrawColor(renderer, 0, 0, 245, 255);
-            SDL_RenderClear(renderer);
-            SDL_Rect boardRect = {300, 100, 400, 400};
+
+            SDL_RenderCopy(renderer, playBG, NULL, NULL);
+
+            SDL_Rect boardRect = {300, 100, 600, 600};
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
             SDL_RenderDrawRect(renderer, &boardRect);
+
+            renderText(renderer, "Home", 1700, 940, 40, {19, 111, 99, 255});
+
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    SDL_Rect cellRect = {300 + i * 100, 100 + j * 100, 100, 100};
+                    SDL_Rect cellRect = {300 + i * 150, 100 + j * 150, 150, 150};
+
+                    if ((i + j) % 2 == 0)
+                    {
+                        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                    }
+                    else
+                    {
+                        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                    }
+
+                    SDL_RenderFillRect(renderer, &cellRect);
+
+                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
                     SDL_RenderDrawRect(renderer, &cellRect);
+
                     if (arr[i][j] == 1)
                     {
                         SDL_Texture *queen = (i + j) % 2 == 0 ? whiteQueen : blackQueen;
-                        SDL_Rect dstrect = {300 + i * 100 + 2, 100 + j * 100 + 2, 96, 96};
+                        if (queen == NULL)
+                        {
+                            printf("Error: Queen texture is null\n");
+                            continue;
+                        }
+                        SDL_Rect dstrect = {300 + i * 150 + 2, 100 + j * 150 + 2, 146, 146};
                         SDL_RenderCopy(renderer, queen, NULL, &dstrect);
                     }
                 }
@@ -277,6 +304,7 @@ int main()
     }
     delete[] arr;
 
+    SDL_DestroyTexture(playBG);
     SDL_DestroyTexture(backgroundHome);
     SDL_DestroyTexture(solution1);
     SDL_DestroyTexture(solution2);
