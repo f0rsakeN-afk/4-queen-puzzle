@@ -142,13 +142,13 @@ bool nQueen(int **arr,int x, int )
 }
 void invalid()
 {
-    settextstyle(BOLD_FONT,HORIZ_DIR,10000);
-    outtextxy(950,150,"INVALID CLICK.");
+    settextstyle(BOLD_FONT,HORIZ_DIR,4);
+    outtextxy(1000,150,"INVALID CLICK.");
 } 
 };
 int main()
 {
-    Queen m,s,A,t;
+    Queen m,s,A,t,I;
     int NEP;
     Home:
     initwindow(1366,768,"OUTPUT1");
@@ -180,16 +180,19 @@ int main()
            c=mouse.x;
            d=mouse.y;
            cout<<"THE CURSOR POSITION IS "<<c<<" "<<d<<endl;
-           if(c>=610 && c<=823 ,d>=530 && d<=583)
+           if(c>=610 && c<=823 && d>=530 && d<=583)
            {
+            closegraph();
             goto Play;
            }
-           if(c>=570 && c<=883,d>=600 && d<=653)
+           if(c>=570 && c<=883 && d>=600 && d<=653)
            {
+            closegraph();
             goto Instruction;
            }
-           if(c>=655 && c<=793,d>=670 && d<=723)
+           if(c>=655 && c<=793 && d>=670 && d<=723)
            {
+            closegraph();
             goto About;
            }
           }
@@ -229,6 +232,7 @@ int main()
            cout<<"THE CURSOR POSITION IS "<<c<<" "<<d<<endl;
            if(c>=1200 && c<=1300 && d>=630 && d<=730)
            {
+            closegraph();
             goto Home;
            }
          }
@@ -254,6 +258,7 @@ int main()
            cout<<"THE CURSOR POSITION IS "<<c<<" "<<d<<endl;
            if(c>=1200 && c<=1300 &&d>=50 && d<=150)
            {
+            closegraph();
             goto Home;
            }
          }
@@ -401,7 +406,7 @@ int main()
     outtextxy(915,245,"[ I ]");
     outtextxy(915,345,"[ II ]");
     outtextxy(915,445,"[ III ]");
-    settextstyle(BOLD_FONT,HORIZ_DIR,10000);
+    settextstyle(BOLD_FONT,HORIZ_DIR,3);
 	while(1)
 	{
 		if(GetAsyncKeyState(VK_LBUTTON))
@@ -420,13 +425,13 @@ int main()
                 f=t.x;
                 g=t.y;
                 cout<<"THE RETURN CORDINATE IS"<<f<<"  "<<g;
-                 if(f!=0 && g!=0)
+                if(f!=0 && g!=0)
                  {
                      
                       readimagefile("white.jpg",f,g,f+92,g+92);
                       cout<<"THE LEFT_CLICKED CORDINATE IS\t("<<c<<","<<d<<")"<<endl;
                  }
-            } 
+            }
 		}
 		else if(GetAsyncKeyState(VK_RBUTTON))
 		{
@@ -464,6 +469,7 @@ int main()
            cout<<"THE CURSOR POSITION IS "<<c<<" "<<d<<endl;
            if(c>=1100 && c<=1265 && d>=620 && d<=720)
            {
+            closegraph();
             goto Home;
            }
          }
@@ -476,6 +482,7 @@ int main()
            cout<<"THE CURSOR POSITION IS "<<c<<" "<<d<<endl;
            if(c>=1100 && c<=1265 && d>=490 && d<=590)
            {
+            closegraph();
             goto Play;
            }
          }
